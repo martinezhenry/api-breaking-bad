@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: breaking-bad-app
+  labels:
+    app: breaking-bad-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: breaking-bad-app
+  template:
+    metadata:
+      labels:
+        app: breaking-bad-app
+    spec:
+      containers:
+        - name: api
+          image: martinezhenry/breaking-bad
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /api/characters/1
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 10
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /api/characters/1
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 60
+            periodSeconds: 60
+            successThreshold: 1
+            timeoutSeconds: 10
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 8080
+              protocol: TCP
