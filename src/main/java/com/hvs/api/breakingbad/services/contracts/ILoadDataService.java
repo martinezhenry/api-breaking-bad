@@ -1,2 +1,10 @@
-package com.hvs.api.breakingbad.services.contracts;public interface ILoadDataService {
+package com.hvs.api.breakingbad.services.contracts;
+
+import java.io.IOException;
+
+public interface ILoadDataService {
+
+
+    int loadCharacters(String dataPath) throws IOException;
+
 }

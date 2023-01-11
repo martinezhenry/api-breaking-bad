@@ -1,0 +1,28 @@
+
+server:
+  servlet:
+    context-path: /api
+#Disable batch job’s auto start
+spring:
+  batch:
+    job:
+      enabled: false
+  main:
+    banner-mode: off
+  #H2 Database properties
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password: test
+  jpa:
+    hibernate:
+      ddl-auto: create
+  h2:
+    console:
+      enabled: true
+
+
+data:
+  characters:
+    path: ./src/main/resources/db/characters.csv
