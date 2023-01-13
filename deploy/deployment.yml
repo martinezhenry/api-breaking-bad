@@ -17,6 +17,7 @@ spec:
       containers:
         - name: api
           image: martinezhenry/breaking-bad
+          imagePullPolicy: Always
           livenessProbe:
             failureThreshold: 3
             httpGet:
