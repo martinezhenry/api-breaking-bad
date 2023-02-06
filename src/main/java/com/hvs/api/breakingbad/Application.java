@@ -22,6 +22,9 @@ public class Application {
     private ILoadDataService loadDataService;
     @Value("${data.characters.path}")
     private String dataCharactersPath;
+    @Value("${data.episodes.path}")
+    private String dataEpisodesPath;
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
@@ -29,6 +32,7 @@ public class Application {
     @EventListener(ApplicationReadyEvent.class)
     public void loadDataAfterStartup() throws IOException {
         this.loadDataService.loadCharacters(dataCharactersPath);
+        this.loadDataService.loadEpisodes(dataEpisodesPath);
     }
 
 }

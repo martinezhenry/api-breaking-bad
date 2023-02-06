@@ -26,3 +26,5 @@ spring:
 data:
   characters:
     path: ./src/main/resources/db/characters.csv
+  episodes:
+    path: ./src/main/resources/db/episodes.csv

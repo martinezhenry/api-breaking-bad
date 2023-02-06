@@ -6,5 +6,6 @@ public interface ILoadDataService {
 
 
     int loadCharacters(String dataPath) throws IOException;
+    int loadEpisodes(String dataPath) throws IOException;
 
 }
