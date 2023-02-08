@@ -5,7 +5,7 @@ metadata:
   labels:
     app: breaking-bad-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: breaking-bad-app
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: martinezhenry/breaking-bad
+          image: ghcr.io/martinezhenry/breaking-bad:latest
           imagePullPolicy: Always
           livenessProbe:
             failureThreshold: 3

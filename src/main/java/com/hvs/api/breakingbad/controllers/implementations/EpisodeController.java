@@ -5,7 +5,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hvs.api.breakingbad.controllers.contracts.IEpisodeController;
 import com.hvs.api.breakingbad.models.Episode;
+import com.hvs.api.breakingbad.services.contracts.IEpisodeService;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +23,7 @@ public class EpisodeController implements IEpisodeController {
     }
     @Override
     @GetMapping(produces = APPLICATION_JSON_VALUE)
-    public List<Character> getEpisodes() {
+    public List<Episode> getEpisodes() {
         return this.episodeService.getEpisodes();
     }
 
