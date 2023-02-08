@@ -18,7 +18,6 @@ public class LoadDataService implements ILoadDataService {
 
     private ICharacterService characterService;
     private IEpisodeService episodeService;
-    private static final String SEPARATOR = ",";
     private static final String SEPARATOR_DOT_COMMA = ";";
     private static final String SEPARATOR_COMMA = ",";
 
@@ -54,13 +53,13 @@ public class LoadDataService implements ILoadDataService {
         List<String> registers = Files.readAllLines(Paths.get(dataPath));
         AtomicInteger saved = new AtomicInteger();
         registers.parallelStream().forEach(register -> {
-            var data = register.split(SEPARATOR);
+            var data = register.split(SEPARATOR_DOT_COMMA);
             var episode = new Episode();
             episode.setId(Long.parseLong(data[0]));
             episode.setTitle(data[1]);
             episode.setSeason(data[2]);
             episode.setAir_date(data[3]);
-            episode.setCharacteres(data[4].split(SEPARATOR));
+            episode.setCharacteres(data[4].split(SEPARATOR_COMMA));
             episode.setEpisode(data[5]);
             
             this.episodeService.saveEpisode(episode);
